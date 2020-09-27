@@ -2,22 +2,28 @@ package com.kostyukov;
 
 public abstract class ListItem
 {
-	private Object previousItem;
-	private Object nextItem;
-	private Object currentItem;
+	protected ListItem previousItem = null;
+	protected ListItem nextItem = null;
+	protected Object currentItem;
 	
-	public abstract void moveToNextItem();
-	
-	public abstract void moveToPreviousItem();
-	
-	public abstract void addItem(Object item);
-	
-	public abstract void removeItem(Object item);
-	
-	public abstract int compareTo(Object item);
+	abstract ListItem nextItem();
+	abstract ListItem setNextItem(ListItem item);
+	abstract ListItem previousItem();
+	abstract ListItem setPreviousItem(ListItem item);
+	abstract int compareTo(ListItem item);
 	
 	public ListItem(Object item)
 	{
 		currentItem = item;
+	}
+	
+	public Object getCurrentItem()
+	{
+		return currentItem;
+	}
+	
+	public void setCurrentItem(Object currentItem)
+	{
+		this.currentItem = currentItem;
 	}
 }
