@@ -71,6 +71,39 @@ public class CustomLinkedList implements NodeList
 	@Override
 	public boolean removeItem(ListItem item)
 	{
+		if (item == null)
+		{
+			System.out.println("Error, nothing to delete");
+			return false;
+		}
+		System.out.println("Deleting " + item.getCurrentItem());
+		
+		ListItem currentItem = root;
+		while (currentItem != null)
+		{
+			int compare = currentItem.compareTo(item);
+			if (compare == 0)
+			{
+				if (currentItem == root)
+				{
+					root = currentItem.nextItem();
+					root.setPreviousItem(null);
+					return true;
+				}
+				if (currentItem.previousItem() != null)
+					currentItem.previousItem().setNextItem(currentItem.nextItem());
+				if (currentItem.nextItem() != null)
+					currentItem.nextItem().setPreviousItem(currentItem.previousItem());
+				return true;
+			}
+			else if (compare < 0)
+			{
+				currentItem = currentItem.nextItem();
+			}
+			else
+				break;
+		}
+		System.out.println("Item " + item.getCurrentItem() + " is not in the list");
 		return false;
 	}
 	

@@ -15,5 +15,11 @@ public class Main
 		}
 		
 		linkedList.traverse(linkedList.selectRoot());
+		
+		linkedList.removeItem(new Node("Adelaide"));
+		
+		linkedList.traverse(linkedList.selectRoot());
+		
+		linkedList.removeItem(new Node("Default City"));
 	}
 }
